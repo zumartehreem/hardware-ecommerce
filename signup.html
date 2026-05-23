@@ -19,23 +19,33 @@
             <form id="signupForm" novalidate>
                 <div class="form-group">
                     <label>Full Name</label>
-                    <input type="text" id="fullName" placeholder="5-20 characters" required>
+                    <input type="text" id="fullName" placeholder="Enter full name" required>
+                    <label class="input-guide">Min 5, Max 20 characters</label>
                     <small class="error-msg" id="nameError"></small>
                 </div>
                 <div class="form-group">
                     <label>Gmail Address</label>
                     <input type="email" id="email" placeholder="example@gmail.com" required>
+                    <label class="input-guide">Must be a valid @gmail.com address</label>
                     <small class="error-msg" id="emailError"></small>
                 </div>
                 <div class="form-group">
                     <label>Phone Number</label>
                     <input type="text" id="phone" placeholder="03xx-xxxxxxx" maxlength="12" required>
+                    <label class="input-guide">Pattern: 03xx-xxxxxxx (12 chars)</label>
                     <small class="error-msg" id="phoneError"></small>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" id="password" placeholder="Min 8 chars, 1 Cap, 1 Special" required>
+                    <input type="password" id="password" placeholder="Create password" required>
+                    <label class="input-guide">8+ chars, 1 Capital, 1 Special character</label>
                     <small class="error-msg" id="passwordError"></small>
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Repeat password" required>
+                    <label class="input-guide">Must match the password above</label>
+                    <small class="error-msg" id="confirmError"></small>
                 </div>
                 <button type="submit" class="btn-submit">Sign Up</button>
                 <p class="auth-switch">Already have an account? <a href="login.html">Sign In</a></p>
@@ -56,6 +66,7 @@
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
             const pass = document.getElementById('password').value;
+            const confirmPass = document.getElementById('confirmPassword').value;
             
             // Name: 5-20 range
             if (name.length < 5 || name.length > 20) {
@@ -90,6 +101,14 @@
                 isValid = false;
             } else {
                 document.getElementById('passwordError').innerText = "";
+            }
+
+            // Confirm Password
+            if (pass !== confirmPass) {
+                document.getElementById('confirmError').innerText = "Passwords do not match.";
+                isValid = false;
+            } else {
+                document.getElementById('confirmError').innerText = "";
             }
             
             if (isValid) {

@@ -366,10 +366,12 @@ function performSearch() {
         return;
     }
 
+    let foundCount = 0;
     allCards.forEach(card => {
         const name = card.getAttribute('data-name').toLowerCase();
         if (name.includes(query)) {
             card.style.display = '';
+            foundCount++;
         } else {
             card.style.display = 'none';
         }
@@ -379,10 +381,27 @@ function performSearch() {
         const visibleCards = block.querySelectorAll('.product-card:not([style*="display: none"])');
         block.style.display = visibleCards.length === 0 ? 'none' : '';
     });
+
+    return foundCount > 0;
 }
 
-if (searchBtn) searchBtn.addEventListener('click', performSearch);
-if (searchInput) searchInput.addEventListener('keyup', performSearch);
+if (searchBtn) {
+    searchBtn.addEventListener('click', () => {
+        const results = performSearch();
+        if (!results && searchInput.value.trim() !== "") {
+            alert("No results or relevant items found for: " + searchInput.value);
+        }
+    });
+}
+
+if (searchInput) {
+    searchInput.addEventListener('keyup', (e) => {
+        const results = performSearch();
+        if (e.key === 'Enter' && !results && searchInput.value.trim() !== "") {
+            alert("No results or relevant items found for: " + searchInput.value);
+        }
+    });
+}
 
 // ===== FORM VALIDATION =====
 const signupPasswordInput = document.getElementById('signupPassword');
@@ -441,8 +460,7 @@ function showToast(message) {
 
 // General helpers
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) backToTop.classList.add('show');
-    else backToTop.classList.remove('show');
+    // Upward arrow shows always as requested
     
     // Scroll progress
     const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
