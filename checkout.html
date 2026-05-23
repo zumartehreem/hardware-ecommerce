@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeviceHub - Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .checkout-page {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 40px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+        .paypal-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .paypal-logo i {
+            font-size: 3rem;
+            color: #0070ba;
+        }
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .checkout-grid { grid-template-columns: 1fr; }
+        }
+        .summary-box {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: var(--radius);
+        }
+        .payment-form .form-group { margin-bottom: 15px; }
+        .paypal-btn {
+            background: #ffc439;
+            color: #000;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .paypal-btn:hover { background: #e2ae32; }
+    </style>
+</head>
+<body>
+    <div class="checkout-page">
+        <div class="paypal-logo">
+            <i class="fab fa-paypal"></i>
+            <h3>PayPal Checkout</h3>
+        </div>
+        
+        <div class="checkout-grid">
+            <div class="summary-box">
+                <h4>Order Summary</h4>
+                <hr style="margin:10px 0; border:0; border-top:1px solid var(--border-color);">
+                <div id="orderItems">
+                    <!-- Items will appear here -->
+                </div>
+                <div style="margin-top:20px; font-weight:700; font-size:1.2rem;">
+                    Total: <span id="checkoutTotal">PKR 0</span>
+                </div>
+            </div>
+
+            <div class="payment-form">
+                <h4>Payment Details</h4>
+                <form id="payForm">
+                    <div class="form-group">
+                        <label>Name on Account</label>
+                        <input type="text" id="payName" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>PayPal Email / Account ID</label>
+                        <input type="email" id="payAccount" placeholder="paypal@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Billing Address</label>
+                        <textarea id="payAddress" placeholder="Enter your full address" required style="width:100%; height:80px; padding:10px; background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-primary); border-radius:8px;"></textarea>
+                    </div>
+                    <button type="submit" class="paypal-btn"><i class="fab fa-paypal"></i> Pay with PayPal</button>
+                    <p style="text-align:center; margin-top:15px;"><a href="index.html" style="color:var(--accent); font-size:0.9rem;">Cancel and return to store</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load data from LocalStorage (passed from script.js)
+        const cartData = JSON.parse(localStorage.getItem('tempCart') || '[]');
+        const total = localStorage.getItem('tempTotal') || '0';
+        
+        const orderContainer = document.getElementById('orderItems');
+        orderContainer.innerHTML = cartData.map(item => `
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.9rem;">
+                <span>${item.name}</span>
+                <span>PKR ${item.price.toLocaleString()}</span>
+            </div>
+        `).join('');
+        
+        document.getElementById('checkoutTotal').innerText = `PKR ${total}`;
+
+        document.getElementById('payForm').onsubmit = (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Processing Transaction...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                alert("Payment Successful! Thank you for shopping with DeviceHub.");
+                localStorage.removeItem('tempCart');
+                localStorage.removeItem('tempTotal');
+                window.location.href = 'index.html';
+            }, 2500);
+        };
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    </script>
+</body>
+</html>

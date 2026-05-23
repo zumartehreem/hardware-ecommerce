@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,82 +10,7 @@
 </head>
 <body>
 
-    <!-- ===== SIGN UP MODAL ===== -->
-    <div class="modal-overlay" id="signupModal">
-        <div class="modal-box">
-            <button class="modal-close" id="closeSignup"><i class="fas fa-times"></i></button>
-            <h2>Create Account</h2>
-            <p class="modal-subtitle">Join DeviceHub today</p>
-            <form id="signupForm" novalidate>
-                <div class="form-group">
-                    <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" placeholder="Enter your full name" required>
-                    <small class="error-msg" id="nameError"></small>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input 
-                        type="text" 
-                        id="phone" 
-                         placeholder="03XX-XXXXXXX"; maxlength="12"; pattern="[0-9]-{12}";inputmode="numeric";required>
-                    <small class="error-msg" id="phoneError"></small>
-                </div>
-                <div class="form-group">
-                    <label for="email">Gmail</label>
-                    <input type="email" id="email" placeholder="example@gmail.com" required>
-                    <small class="error-msg" id="emailError"></small>
-                </div>
-                <div class="form-group">
-                    <label>Gender</label>
-                    <div class="gender-group">
-                        <label class="radio-label"><input type="radio" name="gender" value="male" required> Male</label>
-                        <label class="radio-label"><input type="radio" name="gender" value="female"> Female</label>
-                        <label class="radio-label"><input type="radio" name="gender" value="other"> Other</label>
-                    </div>
-                    <small class="error-msg" id="genderError"></small>
-                </div>
-                <div class="form-group">
-                    <label for="signupPassword">Password</label>
-                    <input type="password" id="signupPassword" placeholder="Create a password" required>
-                    <small class="error-msg" id="passwordError"></small>
-                    <div class="progress-bar-container" id="strengthBarContainer">
-                        <div class="progress-bar" id="strengthBar"></div>
-                    </div>
-                    <small class="strength-text" id="strengthText"></small>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
-                    <small class="error-msg" id="confirmError"></small>
-                </div>
-                <button type="submit" class="btn-submit">Sign Up</button>
-                <p class="form-switch">Already have an account? <a href="#" id="goToSignin">Sign In</a></p>
-            </form>
-        </div>
-    </div>
-
-    <!-- ===== SIGN IN MODAL ===== -->
-    <div class="modal-overlay" id="signinModal">
-        <div class="modal-box">
-            <button class="modal-close" id="closeSignin"><i class="fas fa-times"></i></button>
-            <h2>Welcome Back</h2>
-            <p class="modal-subtitle">Sign in to your account</p>
-            <form id="signinForm" novalidate>
-                <div class="form-group">
-                    <label for="signinUser">Username / Email</label>
-                    <input type="text" id="signinUser" placeholder="Enter username or email" required>
-                    <small class="error-msg" id="signinUserError"></small>
-                </div>
-                <div class="form-group">
-                    <label for="signinPass">Password</label>
-                    <input type="password" id="signinPass" placeholder="Enter your password" required>
-                    <small class="error-msg" id="signinPassError"></small>
-                </div>
-                <button type="submit" class="btn-submit">Sign In</button>
-                <p class="form-switch">Don't have an account? <a href="#" id="goToSignup">Sign Up</a></p>
-            </form>
-        </div>
-    </div>
+    <!-- Modals removed to optimize performance and separate logic -->
 
     <!-- ===== HEADER / NAVBAR ===== -->
     <header id="mainHeader">
@@ -101,49 +25,21 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="index.html" class="nav-link active" data-text="HOME">Home</a></li>
 
-                <!-- Categories Mega Dropdown with Nested Lists -->
                 <li class="dropdown" id="categoryDropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="categoryToggle">Categories <i class="fas fa-chevron-down"></i></a>
-                    <ul class="dropdown-menu nested-menu">
-                        <!-- Laptop with nested sub-items -->
-                        <li class="sub-dropdown">
-                            <a href="#laptops" class="sub-dropdown-toggle"><i class="fas fa-laptop"></i> Laptop <i class="fas fa-chevron-right arrow-right"></i></a>
-                            <ul class="sub-dropdown-menu">
-                                <li><a href="#laptops">Laptops</a></li>
-                                <li><a href="#laptop-bags">Laptop Bags</a></li>
-                                <li><a href="#laptop-chargers">Laptop Chargers</a></li>
-                            </ul>
-                        </li>
-                        <!-- Mobile Phone with nested sub-items -->
-                        <li class="sub-dropdown">
-                            <a href="#phones" class="sub-dropdown-toggle"><i class="fas fa-mobile-alt"></i> Mobile Phone <i class="fas fa-chevron-right arrow-right"></i></a>
-                            <ul class="sub-dropdown-menu">
-                                <li><a href="#phones">Mobile Phones</a></li>
-                                <li><a href="#phone-covers">Phone Covers</a></li>
-                                <li><a href="#phone-chargers">Phone Chargers</a></li>
-                            </ul>
-                        </li>
-                        <!-- Tablet -->
-                        <li class="sub-dropdown">
-                            <a href="#tablets" class="sub-dropdown-toggle"><i class="fas fa-tablet-alt"></i> Tablet <i class="fas fa-chevron-right arrow-right"></i></a>
-                            <ul class="sub-dropdown-menu">
-                                <li><a href="#tablets">Tablets</a></li>
-                            </ul>
-                        </li>
-                        <!-- Smart Watch -->
-                        <li class="sub-dropdown">
-                            <a href="#smartwatches" class="sub-dropdown-toggle"><i class="fas fa-clock"></i> Smart Watch <i class="fas fa-chevron-right arrow-right"></i></a>
-                            <ul class="sub-dropdown-menu">
-                                <li><a href="#smartwatches">Smart Watches</a></li>
-                            </ul>
-                        </li>
+                    <a href="#" class="nav-link dropdown-toggle" id="categoryToggle" data-text="CATEGORIES">Categories <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#laptops"><i class="fas fa-laptop"></i> Laptops</a></li>
+                        <li><a href="#phones"><i class="fas fa-mobile-alt"></i> Mobile Phones</a></li>
+                        <li><a href="#tablets"><i class="fas fa-tablet-alt"></i> Tablets</a></li>
+                        <li><a href="#smartwatches"><i class="fas fa-clock"></i> Smart Watches</a></li>
                     </ul>
                 </li>
 
-                <li><a href="about.html" class="nav-link">About Us</a></li>
-                <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                <li><a href="specs.html" class="nav-link" data-text="SPECS">Compare Specs</a></li>
+                <li><a href="about.html" class="nav-link" data-text="ABOUT">About Us</a></li>
+                <li><a href="contact.html" class="nav-link" data-text="CONTACT">Contact Us</a></li>
 
                 <li>
                     <div class="search-bar">
@@ -154,9 +50,20 @@
             </ul>
 
             <div class="nav-actions">
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </label>
+                </div>
                 <button class="cart-btn" id="cartBtn"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span></button>
-                <button class="btn-nav" id="openSignin">Sign In</button>
-                <button class="btn-nav btn-accent" id="openSignup">Sign Up</button>
+                <div id="userSection" style="display:flex; gap:10px;">
+                    <a href="login.html" class="btn-nav" id="openSignin">Sign In</a>
+                    <a href="signup.html" class="btn-nav btn-accent" id="openSignup">Sign Up</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -177,56 +84,40 @@
         <!-- ===== SCROLLING PROGRESS BAR ===== -->
         <div class="scroll-progress" id="scrollProgress"></div>
 
+        <!-- ===== CATEGORY BANNER ===== -->
+        <div class="category-banner">
+            <div class="banner-track">
+                <div class="banner-item"><i class="fas fa-laptop"></i> Laptops</div>
+                <div class="banner-item"><i class="fas fa-mobile-alt"></i> Smartphones</div>
+                <div class="banner-item"><i class="fas fa-tablet-alt"></i> Tablets</div>
+                <div class="banner-item"><i class="fas fa-clock"></i> Smart Watches</div>
+                <!-- Duplicate for seamless scroll -->
+                <div class="banner-item"><i class="fas fa-laptop"></i> Laptops</div>
+                <div class="banner-item"><i class="fas fa-mobile-alt"></i> Smartphones</div>
+                <div class="banner-item"><i class="fas fa-tablet-alt"></i> Tablets</div>
+                <div class="banner-item"><i class="fas fa-clock"></i> Smart Watches</div>
+            </div>
+        </div>
+
         <!-- ===== PRODUCTS SECTION ===== -->
         <section id="products" class="products-section">
-            <h2 class="section-title">Our Products</h2>
+            <div class="section-header">
+                <h2 class="section-title">Our Products</h2>
+                <div class="filter-controls">
+                    <select id="sortSelect" class="filter-select">
+                        <option value="default">Sort By: Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name-az">Name: A to Z</option>
+                    </select>
+                </div>
+            </div>
 
             <!-- Laptops -->
             <div class="category-block" id="laptops">
                 <h3 class="category-title"><i class="fas fa-laptop"></i> Laptops</h3>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/laptop.webp" alt="HP Laptop">
-                            <span class="card-badge">New</span>
-                        </div>
-                        <div class="card-body">
-                            <h4>HP Pavilion 15</h4>
-                            <p class="card-price">PKR 185,000</p>
-                            <button class="btn-cart" data-name="HP Pavilion 15" data-price="185000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=400&q=80" alt="Dell Laptop">
-                        </div>
-                        <div class="card-body">
-                            <h4>Dell Inspiron 14</h4>
-                            <p class="card-price">PKR 165,000</p>
-                            <button class="btn-cart" data-name="Dell Inspiron 14" data-price="165000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80" alt="MacBook Air">
-                            <span class="card-badge hot">Hot</span>
-                        </div>
-                        <div class="card-body">
-                            <h4>MacBook Air M2</h4>
-                            <p class="card-price">PKR 350,000</p>
-                            <button class="btn-cart" data-name="MacBook Air M2" data-price="350000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&q=80" alt="HP Spectre">
-                        </div>
-                        <div class="card-body">
-                            <h4>HP Spectre x360</h4>
-                            <p class="card-price">PKR 280,000</p>
-                            <button class="btn-cart" data-name="HP Spectre x360" data-price="280000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
+                    <!-- Products will be loaded dynamically from products.json -->
                 </div>
             </div>
 
@@ -234,46 +125,7 @@
             <div class="category-block" id="laptop-bags">
                 <h3 class="category-title"><i class="fas fa-briefcase"></i> Laptop Bags</h3>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/laptop bag.webp" alt="Laptop Bag">
-                        </div>
-                        <div class="card-body">
-                            <h4>Executive Laptop Bag</h4>
-                            <p class="card-price">PKR 4,500</p>
-                            <button class="btn-cart" data-name="Executive Laptop Bag" data-price="4500"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Backpack Laptop Bag">
-                        </div>
-                        <div class="card-body">
-                            <h4>Tech Backpack Pro</h4>
-                            <p class="card-price">PKR 6,500</p>
-                            <button class="btn-cart" data-name="Tech Backpack Pro" data-price="6500"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/L3bag.webp" alt="Slim Laptop Sleeve">
-                        </div>
-                        <div class="card-body">
-                            <h4>Slim Laptop Sleeve</h4>
-                            <p class="card-price">PKR 3,000</p>
-                            <button class="btn-cart" data-name="Slim Laptop Sleeve" data-price="3000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/l4bag.webp" alt="Leather Laptop Bag">
-                        </div>
-                        <div class="card-body">
-                            <h4>Leather Messenger Bag</h4>
-                            <p class="card-price">PKR 9,500</p>
-                            <button class="btn-cart" data-name="Leather Messenger Bag" data-price="9500"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
+                    <!-- Products will be loaded dynamically from products.json -->
                 </div>
             </div>
 
@@ -281,46 +133,7 @@
             <div class="category-block" id="laptop-chargers">
                 <h3 class="category-title"><i class="fas fa-plug"></i> Laptop Chargers</h3>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/laptop charger.webp" alt="Laptop Charger">
-                        </div>
-                        <div class="card-body">
-                            <h4>Universal 65W Charger</h4>
-                            <p class="card-price">PKR 5,500</p>
-                            <button class="btn-cart" data-name="Universal 65W Charger" data-price="5500"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&q=80" alt="USB-C Charger">
-                        </div>
-                        <div class="card-body">
-                            <h4>MacBook charger</h4>
-                            <p class="card-price">PKR 7,000</p>
-                            <button class="btn-cart" data-name="MacBook charger" data-price="7000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/hp charger.webp" alt="HP laptop charger">
-                        </div>
-                        <div class="card-body">
-                            <h4>HP laptop charger</h4>
-                            <p class="card-price">PKR 7,000</p>
-                            <button class="btn-cart" data-name="HP laptop charger" data-price="7000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/dell charger.webp" alt="Dell Charger">
-                        </div>
-                        <div class="card-body">
-                            <h4>Dell 90W Adapter</h4>
-                            <p class="card-price">PKR 6,000</p>
-                            <button class="btn-cart" data-name="Dell 90W Adapter" data-price="6000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
+                    <!-- Products will be loaded dynamically from products.json -->
                 </div>
             </div>
 
@@ -328,47 +141,7 @@
             <div class="category-block" id="tablets">
                 <h3 class="category-title"><i class="fas fa-tablet-alt"></i> Tablets</h3>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&q=80" alt="iPad Pro">
-                            <span class="card-badge hot">Hot</span>
-                        </div>
-                        <div class="card-body">
-                            <h4>iPad Pro 12.9"</h4>
-                            <p class="card-price">PKR 295,000</p>
-                            <button class="btn-cart" data-name="iPad Pro 12.9" data-price="295000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400&q=80" alt="Samsung Tab">
-                        </div>
-                        <div class="card-body">
-                            <h4>Samsung Galaxy Tab S9</h4>
-                            <p class="card-price">PKR 210,000</p>
-                            <button class="btn-cart" data-name="Samsung Galaxy Tab S9" data-price="210000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=400&q=80" alt="iPad Air">
-                        </div>
-                        <div class="card-body">
-                            <h4>iPad Air M1</h4>
-                            <p class="card-price">PKR 155,000</p>
-                            <button class="btn-cart" data-name="iPad Air M1" data-price="155000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1632882765546-1ee75f53becb?w=400&q=80" alt="Lenovo Tab">
-                        </div>
-                        <div class="card-body">
-                            <h4>Lenovo Tab P12 Pro</h4>
-                            <p class="card-price">PKR 120,000</p>
-                            <button class="btn-cart" data-name="Lenovo Tab P12 Pro" data-price="120000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
+                    <!-- Products will be loaded dynamically from products.json -->
                 </div>
             </div>
 
@@ -376,47 +149,7 @@
             <div class="category-block" id="phones">
                 <h3 class="category-title"><i class="fas fa-mobile-alt"></i> Mobile Phones</h3>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/iphone.webp" alt="iPhone">
-                            <span class="card-badge hot">Hot</span>
-                        </div>
-                        <div class="card-body">
-                            <h4>iPhone</h4>
-                            <p class="card-price">PKR 520,000</p>
-                            <button class="btn-cart" data-name="iPhone 17 Pro Max" data-price="520000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/samsung.jpg" alt="Samsung Phone">
-                        </div>
-                        <div class="card-body">
-                            <h4>Samsung Galaxy S24</h4>
-                            <p class="card-price">PKR 310,000</p>
-                            <button class="btn-cart" data-name="Samsung Galaxy S24" data-price="310000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/vivo18.webp" alt="Vivo Phone">
-                        </div>
-                        <div class="card-body">
-                            <h4>Vivo Y18</h4>
-                            <p class="card-price">PKR 175,000</p>
-                            <button class="btn-cart" data-name="Vivo Y18" data-price="175000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Other Phone">
-                        </div>
-                        <div class="card-body">
-                            <h4>OnePlus 12</h4>
-                            <p class="card-price">PKR 220,000</p>
-                            <button class="btn-cart" data-name="OnePlus 12" data-price="220000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
+                    <!-- Products will be loaded dynamically from products.json -->
                 </div>
             </div>
 
@@ -424,46 +157,7 @@
             <div class="category-block" id="phone-covers">
                 <h3 class="category-title"><i class="fas fa-shield-alt"></i> Phone Covers</h3>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/phone covers.webp" alt="Phone Cover">
-                        </div>
-                        <div class="card-body">
-                            <h4>Premium Silicone Case</h4>
-                            <p class="card-price">PKR 1,800</p>
-                            <button class="btn-cart" data-name="Premium Silicone Case" data-price="1800"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/iphone cover].webp" alt="Clear Case">
-                        </div>
-                        <div class="card-body">
-                            <h4>Crystal Clear Case</h4>
-                            <p class="card-price">PKR 1,200</p>
-                            <button class="btn-cart" data-name="Crystal Clear Case" data-price="1200"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/vivo cover.webp" alt="Leather Phone Case">
-                        </div>
-                        <div class="card-body">
-                            <h4>Leather Flip Cover</h4>
-                            <p class="card-price">PKR 3,500</p>
-                            <button class="btn-cart" data-name="Leather Flip Cover" data-price="3500"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&q=80" alt="Rugged Case">
-                        </div>
-                        <div class="card-body">
-                            <h4>Rugged Armor Case</h4>
-                            <p class="card-price">PKR 2,800</p>
-                            <button class="btn-cart" data-name="Rugged Armor Case" data-price="2800"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
+                    <!-- Products will be loaded dynamically from products.json -->
                 </div>
             </div>
 
@@ -471,46 +165,7 @@
             <div class="category-block" id="phone-chargers">
                 <h3 class="category-title"><i class="fas fa-bolt"></i> Phone Chargers</h3>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=400&q=80" alt="Fast Charger">
-                        </div>
-                        <div class="card-body">
-                            <h4>25W Fast Charger</h4>
-                            <p class="card-price">PKR 2,500</p>
-                            <button class="btn-cart" data-name="25W Fast Charger" data-price="2500"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/samsung charger.webp" alt="Wireless Charger">
-                        </div>
-                        <div class="card-body">
-                            <h4> Samsung Wireless Charger</h4>
-                            <p class="card-price">PKR 5,500</p>
-                            <button class="btn-cart" data-name="Samsung Wireless Charger" data-price="5500"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/vivo charger.webp" alt="Car Charger">
-                        </div>
-                        <div class="card-body">
-                            <h4>Vivo Charger</h4>
-                            <p class="card-price">PKR 2,000</p>
-                            <button class="btn-cart" data-name="Vivo Charger" data-price="2000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/fast charger.webp" alt="Multi-port Charger">
-                        </div>
-                        <div class="card-body">
-                            <h4>Fast Charger</h4>
-                            <p class="card-price">PKR 4,000</p>
-                            <button class="btn-cart" data-name="Multi-Port USB Charger" data-price="4000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
+                    <!-- Products will be loaded dynamically from products.json -->
                 </div>
             </div>
 
@@ -518,47 +173,7 @@
             <div class="category-block" id="smartwatches">
                 <h3 class="category-title"><i class="fas fa-clock"></i> Smart Watches</h3>
                 <div class="product-grid">
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="images/smart watch.webp" alt="Smart Watch">
-                            <span class="card-badge">New</span>
-                        </div>
-                        <div class="card-body">
-                            <h4>Apple Watch Ultra 2</h4>
-                            <p class="card-price">PKR 195,000</p>
-                            <button class="btn-cart" data-name="Apple Watch Ultra 2" data-price="195000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&q=80" alt="Samsung Watch">
-                        </div>
-                        <div class="card-body">
-                            <h4>Samsung Galaxy Watch 6</h4>
-                            <p class="card-price">PKR 75,000</p>
-                            <button class="btn-cart" data-name="Samsung Galaxy Watch 6" data-price="75000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400&q=80" alt="Fitbit Watch">
-                        </div>
-                        <div class="card-body">
-                            <h4>Fitbit Sense 2</h4>
-                            <p class="card-price">PKR 55,000</p>
-                            <button class="btn-cart" data-name="Fitbit Sense 2" data-price="55000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
-                    <article class="product-card">
-                        <div class="card-image">
-                            <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400&q=80" alt="Touch Watch">
-                        </div>
-                        <div class="card-body">
-                            <h4>Amazfit GTR 4</h4>
-                            <p class="card-price">PKR 38,000</p>
-                            <button class="btn-cart" data-name="Amazfit GTR 4" data-price="38000"><i class="fas fa-cart-plus"></i> Add to Cart</button>
-                        </div>
-                    </article>
+                    <!-- Products will be loaded dynamically from products.json -->
                 </div>
             </div>
         </section>
@@ -617,6 +232,28 @@
     <!-- ===== BACK TO TOP ===== -->
     <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
+    <!-- ===== CHATBOT WIDGET ===== -->
+    <div class="chatbot-widget">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <span><i class="fas fa-robot"></i> DeviceHub AI</span>
+                <button id="closeChatbot" style="background:none; border:none; color:#fff; cursor:pointer;"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chat-msg bot">Hello! I'm your DeviceHub assistant. How can I help you today?</div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your message...">
+                <button id="sendChatbot"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== EXTERNAL JS REFERENCING (SDKs) ===== -->
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
     <script src="script.js"></script>
 </body>
 </html>

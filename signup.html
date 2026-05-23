@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeviceHub - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <i class="fas fa-microchip logo-icon"></i>
+                <h2>Create Account</h2>
+                <p>Join Pakistan's leading hardware store</p>
+            </div>
+            <form id="signupForm" novalidate>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="fullName" placeholder="5-20 characters" required>
+                    <small class="error-msg" id="nameError"></small>
+                </div>
+                <div class="form-group">
+                    <label>Gmail Address</label>
+                    <input type="email" id="email" placeholder="example@gmail.com" required>
+                    <small class="error-msg" id="emailError"></small>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" id="phone" placeholder="03xx-xxxxxxx" maxlength="12" required>
+                    <small class="error-msg" id="phoneError"></small>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Min 8 chars, 1 Cap, 1 Special" required>
+                    <small class="error-msg" id="passwordError"></small>
+                </div>
+                <button type="submit" class="btn-submit">Sign Up</button>
+                <p class="auth-switch">Already have an account? <a href="login.html">Sign In</a></p>
+                <p class="auth-back"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Validation logic for Signup page
+        const form = document.getElementById('signupForm');
+        
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            let isValid = true;
+            
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const pass = document.getElementById('password').value;
+            
+            // Name: 5-20 range
+            if (name.length < 5 || name.length > 20) {
+                document.getElementById('nameError').innerText = "Name must be between 5 and 20 characters.";
+                isValid = false;
+            } else {
+                document.getElementById('nameError').innerText = "";
+            }
+            
+            // Gmail pattern
+            const gmailPattern = /^[a-z0-9](\.?[a-z0-9]){5,}@gmail\.com$/;
+            if (!gmailPattern.test(email)) {
+                document.getElementById('emailError').innerText = "Invalid Gmail address pattern.";
+                isValid = false;
+            } else {
+                document.getElementById('emailError').innerText = "";
+            }
+            
+            // Phone: [0-9]{4}-[0-9]{7} (12 chars including -)
+            const phonePattern = /^[0-9]{4}-[0-9]{7}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById('phoneError').innerText = "Use pattern 03xx-xxxxxxx (12 chars total).";
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').innerText = "";
+            }
+            
+            // Password: 8 length, 1 Capital, 1 Special
+            const passPattern = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$/;
+            if (!passPattern.test(pass)) {
+                document.getElementById('passwordError').innerText = "Min 8 chars, 1 Capital, 1 Digital and 1 Special char.";
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').innerText = "";
+            }
+            
+            if (isValid) {
+                // Check if email already exists
+                let users = JSON.parse(localStorage.getItem('users') || '[]');
+                if (users.find(u => u.email === email)) {
+                    alert("Email already exists! Please use another.");
+                    return;
+                }
+                
+                users.push({ name, email, phone, pass });
+                localStorage.setItem('users', JSON.stringify(users));
+                alert("Account created successfully!");
+                window.location.href = 'login.html';
+            }
+        };
+
+        // Sync theme with main site
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    </script>
+</body>
+</html>

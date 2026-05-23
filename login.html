@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeviceHub - Sign In</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <i class="fas fa-microchip logo-icon"></i>
+                <h2>Welcome Back</h2>
+                <p>Sign in to your DeviceHub account</p>
+            </div>
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label>Gmail / Username</label>
+                    <input type="text" id="loginUser" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPass" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn-submit">Sign In</button>
+                <p class="auth-switch">Don't have an account? <a href="signup.html">Sign Up</a></p>
+                <p class="auth-back"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            const userEmail = document.getElementById('loginUser').value.trim();
+            const userPass = document.getElementById('loginPass').value;
+            
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+            const foundUser = users.find(u => u.email === userEmail && u.pass === userPass);
+            
+            if (foundUser) {
+                alert("Login successful! Welcome " + foundUser.name);
+                localStorage.setItem('loggedInUser', JSON.stringify(foundUser));
+                window.location.href = 'index.html';
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        };
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    </script>
+</body>
+</html>
